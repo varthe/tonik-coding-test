@@ -3,6 +3,7 @@
 import TypingField from "@/components/TypingField"
 import InputUsername from "../components/InputUsername"
 import { useUsername } from "../context/UsernameContext"
+import Leaderboard from "@/components/Leaderboard"
 
 export default function Home() {
   const { username } = useUsername()
@@ -13,6 +14,7 @@ export default function Home() {
         <div className="w-full max-w-3xl space-y-8 text-center">
           <h1 className="text-3xl font-bold text-gray-800">Hello {username}!</h1>
           <TypingField />
+          <Leaderboard />
         </div>
       ) : (
         <InputUsername />
