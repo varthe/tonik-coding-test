@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useUsername } from "../context/UsernameContext"
+import { emitUserJoin } from "@/api/socket"
 
 export default function InputUsername() {
   const [input, setInput] = useState("")
@@ -27,11 +28,12 @@ export default function InputUsername() {
 
     setErrors([])
     setUsername(input)
+    emitUserJoin(input)
   }
 
   return (
     <div className="max-w-sm mx-auto p-6 border-2 border-gray-300 rounded-xl shadow-md text-center space-y-4">
-      <h1 className="text-2xl font-bold text-white">Pick your username</h1>
+      <h1 className="text-2xl font-bold text-black">Pick your username</h1>
       <div className="flex flex-row space-x-4">
         <input
           type="text"
@@ -44,7 +46,7 @@ export default function InputUsername() {
         <button
           type="button"
           onClick={saveUsername}
-          className="py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+          className="py-2 px-4 bg-blue-600 font-semibold rounded-lg hover:bg-blue-700 transition-colors"
         >
           Save
         </button>
