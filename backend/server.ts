@@ -43,6 +43,7 @@ const endRound = () => {
   for (const id in players) {
     const p = players[id]
     if (!p.finished) {
+      console.log(`Player ID ${p.id} didn't finish in time`)
       let correctCount = 0
       for (let i = 0; i < p.progress.length; i++) {
         if (p.progress[i] === currentSentence[i]) {
@@ -70,10 +71,11 @@ const startRound = () => {
   if (Object.keys(players).length === 0 || roundActive) {
     return
   }
-
   roundActive = true
   currentSentence = randomSentence()
   startTime = Date.now()
+
+  console.log(`Starting new round at ${startTime}`)
 
   for (const id in players) {
     players[id] = { ...players[id], progress: "", finished: false, wpm: undefined, accuracy: undefined, failedKeystrokes: 0 }
@@ -88,6 +90,7 @@ const startRound = () => {
 
 io.on("connection", (socket) => {
   socket.on("join", (username) => {
+    console.log(`Player ${username} joined the game with ID ${socket.id}`)
     players[socket.id] = { id: socket.id, username, progress: "", finished: false, failedKeystrokes: 0 }
     io.emit("players", Object.values(players))
     startRound()
@@ -109,6 +112,7 @@ io.on("connection", (socket) => {
       if (!players[socket.id] || !roundActive) {
         return
       }
+      console.log(`Player ID ${socket.id} finished successfully`)
 
       const { wpm, accuracy } = calculateStats(correctChars, failedKeystrokes)
       players[socket.id] = { ...players[socket.id], wpm, accuracy, finished, failedKeystrokes }
@@ -118,6 +122,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     delete players[socket.id]
+    console.log(`Player ID ${socket.id} disconnected`)
     io.emit("players", Object.values(players))
   })
 })
