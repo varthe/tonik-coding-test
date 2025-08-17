@@ -2,6 +2,8 @@
 
 Live site available on: https://tonik.lmonk.net
 
+Some lag is present due to the Cloudflare tunnel, but given the unsecure nature of this app I don't feel comfortable deploying it without Cloudflare.
+
 ## How to run
 
 ### Option 1: Docker
