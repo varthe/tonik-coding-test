@@ -135,7 +135,11 @@ export default function TypingField() {
       <p className="text-gray-700 text-xl min-h-[1.75rem]">{sentence}</p>
       <div
         className={`relative w-full max-w-lg rounded-lg border-2 px-4 py-2 font-mono text-lg ${
-          showError ? "border-red-500 bg-red-50" : roundActive ? "border-gray-300 bg-white" : "border-gray-200 bg-gray-100"
+          showError
+            ? "border-red-500 bg-red-50"
+            : roundActive
+            ? "border-gray-300 bg-white"
+            : "border-gray-200 bg-gray-100"
         }`}
       >
         <div className="absolute inset-0 flex items-center px-4 py-2 font-mono text-lg">
@@ -154,8 +158,12 @@ export default function TypingField() {
           className="relative z-10 w-full bg-transparent text-transparent caret-blue-600 outline-none"
         />
       </div>
-      <p className="text-sm text-gray-600 h-5">
-        {roundActive ? Math.ceil(remaining / 1000) : breakRemaining > 0 ? `Next round in ${Math.ceil(breakRemaining / 1000)}` : ""}
+      <p className="text-lg text-gray-600 h-5">
+        {roundActive
+          ? Math.ceil(remaining / 1000)
+          : breakRemaining > 0
+          ? `Next round in ${Math.ceil(breakRemaining / 1000)}`
+          : ""}
       </p>
     </div>
   )

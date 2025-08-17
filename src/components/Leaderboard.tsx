@@ -15,13 +15,14 @@ export default function Leaderboard() {
 
   return (
     <div className="border border-gray-300 rounded-md p-4 w-full max-w-md mx-auto text-black">
-      <h2 className="text-lg font-semibold mb-2 border-b pb-1">Leaderboard</h2>
-      <ul className="space-y-1">
+      <h2 className="text-lg font-semibold border-b pb-1">Leaderboard</h2>
+      <ul className="">
         {players.map((p) => (
-          <li key={p.id} className="flex justify-between border-b last:border-b-0 py-1 text-sm">
+          <li key={p.id} className="flex justify-between border-b last:border-b-0 text-sm py-2">
             <span>{p.username}</span>
             <span>
-              {p.wpm != null ? `${Math.round(p.wpm)} WPM` : "—"} | {p.accuracy != null ? `${Math.round(p.accuracy * 100)}%` : "—"}
+              {p.wpm != null ? `${Math.round(p.wpm)} WPM` : "—"} |{" "}
+              {p.accuracy != null ? `${Math.round(p.accuracy * 100)}%` : "—"}
             </span>
           </li>
         ))}
