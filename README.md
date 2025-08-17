@@ -30,7 +30,7 @@ services:
       - "3000:3000"
       - "3001:3001"
     # environment:
-    # - SOCKET_URL= # Socket URL if deploying in production
+    # - NEXT_PUBLIC_SOCKET_URL= # Socket URL if deploying in production
     restart: unless-stopped
 ```
 

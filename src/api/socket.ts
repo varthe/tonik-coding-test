@@ -1,6 +1,6 @@
 import { io } from "socket.io-client"
 
-const socket = io(process.env.SOCKET_URL ?? "http://localhost:3001", { autoConnect: true })
+const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL ?? "http://localhost:3001", { autoConnect: true })
 
 export const joinGame = (username: string) => socket.emit("join", username)
 export const onPlayersUpdate = (cb: (players: any[]) => void) => socket.on("players", cb)
