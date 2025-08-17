@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useUsername } from "../context/UsernameContext"
-import { emitUserJoin } from "@/api/socket"
+import { joinGame } from "@/api/socket"
 
 export default function InputUsername() {
   const [input, setInput] = useState("")
@@ -28,7 +28,7 @@ export default function InputUsername() {
 
     setErrors([])
     setUsername(input)
-    emitUserJoin(input)
+    joinGame(input)
   }
 
   return (
@@ -39,7 +39,7 @@ export default function InputUsername() {
           type="text"
           placeholder="Input username"
           onChange={(e) => setInput(e.target.value)}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+          className={`text-black w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
             errors.length > 0 ? "border-red-400" : "border-gray-300"
           }`}
         />
