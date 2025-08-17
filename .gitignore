@@ -5,6 +5,7 @@ test/
 # Build output
 .next/
 out/
+dist/
 
 # Production
 build/
