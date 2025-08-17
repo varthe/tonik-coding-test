@@ -24,13 +24,14 @@ docker build -t tonik .
 ```yaml
 services:
   tonik:
+    build:
+      context: .
+      # args:
+      #   NEXT_PUBLIC_SOCKET_URL: # Socket URL if deploying in production
     container_name: tonik
-    image: tonik
     ports:
       - "3000:3000"
       - "3001:3001"
-    # environment:
-    # - NEXT_PUBLIC_SOCKET_URL= # Socket URL if deploying in production
     restart: unless-stopped
 ```
 
