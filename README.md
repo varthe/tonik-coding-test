@@ -40,6 +40,7 @@ services:
 4. Compose and run:
 
 ```bash
+docker compose build --no-cache tonik
 docker compose up -d
 docker logs -f tonik # To show logs
 ```
