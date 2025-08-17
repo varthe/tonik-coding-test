@@ -22,6 +22,7 @@ export default function TypingField() {
 
   const failedRef = useRef(0)
   const finishedRef = useRef(false)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const typedSentence = useMemo(() => {
     if (!sentence) {
@@ -48,6 +49,7 @@ export default function TypingField() {
       failedRef.current = 0
       finishedRef.current = false
       setBreakRemaining(0)
+      inputRef.current?.focus()
     })
     onRoundEnd(() => {
       setRoundActive(false)
@@ -141,6 +143,7 @@ export default function TypingField() {
           <span className="text-gray-400 select-none">{ghostText()}</span>
         </div>
         <input
+          ref={inputRef}
           type="text"
           value={input}
           onChange={onInputChange}
